@@ -61,6 +61,7 @@ namespace Parcial3_VargasGaviriaJhoanSebastian.Controllers
             if (ModelState.IsValid)
             {
                 ticket.Id = Guid.NewGuid();
+                ticket.CreateDate = DateTime.Now;
                 _context.Add(ticket);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -100,6 +101,8 @@ namespace Parcial3_VargasGaviriaJhoanSebastian.Controllers
             {
                 try
                 {
+                    ticket.UseDate = DateTime.Now;
+                    ticket.ModifiedDate = DateTime.Now;
                     _context.Update(ticket);
                     await _context.SaveChangesAsync();
                 }
